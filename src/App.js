@@ -1,12 +1,10 @@
-import Button from "./components/Button";
 import Home from "./pages/Home";
-
 
 function App() {
   return (
-    <>
+    <div className="font-rubik">
       <Home />
-    </>
+    </div>
     // <div className="">
     //   {" "}<Button primary label='Get Started' type="square" />
     //   <br />

@@ -14,7 +14,7 @@ const bounce = cssTransition({
 });
 
 const AuthModal = ({ active, setActive, setUsername }) => {
-  const [{ data, loading, emailError, passwordError, error }, getAuth] = useAuth();
+  const [{ data, loading, passwordError }, getAuth] = useAuth();
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     email: "",
@@ -83,7 +83,6 @@ const AuthModal = ({ active, setActive, setUsername }) => {
   };
 
   useEffect(() => {
-    console.log(data)
     setUsername(data)
   }, [data, setUsername])
 

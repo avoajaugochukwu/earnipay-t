@@ -7,6 +7,9 @@ module.exports = {
       fontFamily: {
         'rubik': ['Rubik', 'font-rubik'] 
       },
+      lineHeight: {
+        'for-hero': '70px',
+      }
     },
   },
   plugins: [],

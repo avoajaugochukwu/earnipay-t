@@ -49,3 +49,7 @@
   border-width: 1px;
   border-style: solid;
 }
+.button-border--fill {
+  background-color: #F53838;
+  color: #fff;
+}
