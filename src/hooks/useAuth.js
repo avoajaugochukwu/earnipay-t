@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 const MESSAGES = {
-  noUserName: "Please enter your user name",
+  noEmail: "Please enter your user name",
   noPassword: "Please enter your password",
   wrongPassword: "The password you entered is wrong",
 };
@@ -19,16 +19,16 @@ export default () => {
     ...initialState
   });
 
-  const getAuth = async (userName, password, callBack) => {
+  const getAuth = async (email, password, callBack) => {
     setResult((prevState) => ({ ...initialState, loading: true }));
 
     setTimeout(() => {
-      if (!userName) {
+      if (!email) {
         setResult((prevState) => ({
           ...prevState,
           loading: false,
           error: true,
-          errorMessage: MESSAGES.noUserName,
+          errorMessage: MESSAGES.noEmail,
         }));
         callBack();
         return;
@@ -50,7 +50,7 @@ export default () => {
         setResult((prevState) => ({
           ...prevState,
           loading: false,
-          data: userName,
+          data: email,
           errorMessage: MESSAGES.success
         }));
         callBack();

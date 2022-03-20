@@ -1,50 +1,88 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo_white_bg from "../../assets/img/logo_white_bg.png";
 import close_icon from "../../assets/img/211652_close_icon.svg";
 import Loading from "../../common/Loading/Loading";
 import useAuth from "../../hooks/useAuth";
 
+import { isFormValid } from "./auth.helpers";
+
 import "animate.css/animate.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast, cssTransition } from "react-toastify";
 
-
 const bounce = cssTransition({
   enter: "animate__animated animate__bounceIn",
-  exit: "animate__animated animate__bounceOut"
+  exit: "animate__animated animate__bounceOut",
 });
 
 // https://animista.net/
 // source animation inside style.css
 const swirl = cssTransition({
   enter: "swirl-in-fwd",
-  exit: "swirl-out-bck"
+  exit: "swirl-out-bck",
 });
 
 const AuthModal = ({ active, setActive }) => {
   const [{ data, loading, errorMessage, error }, getAuth] = useAuth();
   const [submitted, setSubmitted] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (userName, password) => {
-    getAuth(userName, password, closeModal);
-  };
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
 
   const [validation, setValidation] = useState({
-    
-  })
+    email: undefined,
+    password: undefined,
+  });
 
-  const closeModal = () => {
-    setActive(!active);
-    animateCss();
+  const validateForm = () => {
+    const mailRe =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    const passwordRe = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+    const nextValidation = { ...validation };
+
+    nextValidation.email = mailRe.test(form.email);
+    nextValidation.password = passwordRe.test(form.password);
+
+    setValidation(nextValidation);
+    return nextValidation;
   };
 
-  const animateCss = () => {
-    toast("Item added to cart", {
-      transition: bounce
-    });
-  }
+  useEffect(() => {
+    validateForm();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form]);
+
+  const isFieldInvalid = (field) => {
+    return (
+      submitted &&
+      typeof validation[field] === "boolean" &&
+      (validation[field] === false || validation[field] === "0")
+    );
+  };
+
+  const onSubmitForm = () => {
+    const current_validation = validateForm();
+
+    setSubmitted(true);
+
+    if (!isFormValid(current_validation)) {
+      toast.error("Please complete the missing fields", {
+        transition: bounce,
+      });
+      return;
+    }
+
+    getAuth(form.email, form.password, closeModal);
+  };
+
+  const closeModal = () => {
+    setActive(false);
+    setSubmitted(false);
+    setForm({email: "", password: ""})
+  };
 
   return (
     <>
@@ -68,7 +106,7 @@ const AuthModal = ({ active, setActive }) => {
           {/* -----------*******----------- */}
           <div className="relative items-center w-full max-w-md px-6 mx-auto lg:w-1/2">
             <img
-              onClick={() => setActive(false)}
+              onClick={() => closeModal()}
               className=" inline cursor-pointer absolute top-[-20px] right-[-40px]"
               src={close_icon}
               alt="close icon"
@@ -92,7 +130,7 @@ const AuthModal = ({ active, setActive }) => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm text-gray-600 "
+                    className={`block mb-2 text-sm text-gray-600 ${isFieldInvalid("email") ? "text-red-400" : ""}`}
                   >
                     Email Address
                   </label>
@@ -101,8 +139,12 @@ const AuthModal = ({ active, setActive }) => {
                     name="email"
                     id="email"
                     placeholder="example@example.com"
-                    onChange={({ target: { value } }) => setUsername(value)}
-                    className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md  focus:border-red-400  focus:ring-red-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    onChange={({ target: { value } }) =>
+                      setForm((form) => ({ ...form, email: value }))
+                    }
+                    className={` ${
+                      isFieldInvalid("email") ? "border-red-400 border-2" : ""
+                    } block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md`}
                   />
                 </div>
 
@@ -110,7 +152,7 @@ const AuthModal = ({ active, setActive }) => {
                   <div className="flex justify-between mb-2">
                     <label
                       htmlFor="password"
-                      className="text-sm text-gray-600 "
+                      className={`text-sm text-gray-600 ${isFieldInvalid("password") ? "text-red-400" : ""} `}
                     >
                       Password
                     </label>
@@ -127,15 +169,21 @@ const AuthModal = ({ active, setActive }) => {
                     name="password"
                     id="password"
                     placeholder="Your Password"
-                    onChange={({ target: { value } }) => setPassword(value)}
-                    className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md  focus:border-red-400 focus:ring-red-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    onChange={({ target: { value } }) =>
+                      setForm((form) => ({ ...form, password: value }))
+                    }
+                    className={`${
+                      isFieldInvalid("password")
+                        ? "border-red-400 border-2"
+                        : ""
+                    } block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md`}
                   />
                 </div>
 
                 <div className="mt-6">
                   <button
                     className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red-500 rounded-md focus:outline-none "
-                    onClick={() => handleSubmit(username, password)}
+                    onClick={() => onSubmitForm()}
                   >
                     {loading ? <Loading /> : "Sign in"}
                   </button>

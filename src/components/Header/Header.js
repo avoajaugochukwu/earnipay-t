@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo_white_bg from "../../assets/img/logo_white_bg.png";
 import "./header.css";
 import Button from "../Button";
-import AuthModal from "./AuthModal";
+import AuthModal from "../AuthModal";
 
 const Header = () => {
   const [active, setActive] = useState(false);
