@@ -9,6 +9,7 @@ module.exports = {
       },
       lineHeight: {
         'for-hero': '70px',
+        'for-world': '55px',
       }
     },
   },

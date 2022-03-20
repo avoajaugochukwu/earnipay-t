@@ -10,6 +10,10 @@ import hero_2_img from "../../assets/img/hero_2.svg";
 import green_check_mark from "../../assets/img/green_check_mark.svg";
 import Button from "../../common/Button";
 import World from "./World";
+import Reviews from "./Reviews";
+import Subscribe from "./Subscribe";
+
+import Footer from "../Footer";
 
 const Hero = () => {
   return (
@@ -96,6 +100,9 @@ const Hero = () => {
       {/* ******************************************************************* */}
       <Packages />
       <World />
+      <Reviews />
+      <Subscribe />
+      <Footer />
     </>
   );
 };

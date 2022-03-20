@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo_white_bg from "../../assets/img/logo_white_bg.png";
+import logo_white_bg from "../../assets/img/logo.svg";
 import Button from "../../common/Button";
 import AuthModal from "../AuthModal";
 
