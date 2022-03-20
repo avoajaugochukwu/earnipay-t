@@ -11,7 +11,8 @@ export default () => {
   const initialState = {
     data: "",
     loading: false,
-    errorMessage: null,
+    emailError: null,
+    passwordError: null,
     error: null,
   }
 
@@ -20,7 +21,7 @@ export default () => {
   });
 
   const getAuth = async (email, password, callBack) => {
-    setResult((prevState) => ({ ...initialState, loading: true }));
+    setResult(() => ({ ...initialState, loading: true }));
 
     setTimeout(() => {
       if (!email) {
@@ -28,9 +29,8 @@ export default () => {
           ...prevState,
           loading: false,
           error: true,
-          errorMessage: MESSAGES.noEmail,
+          emailError: MESSAGES.noEmail,
         }));
-        callBack();
         return;
       }
       if (!password) {
@@ -38,20 +38,18 @@ export default () => {
           ...prevState,
           loading: false,
           error: true,
-          errorMessage: MESSAGES.noPassword,
+          passwordError: MESSAGES.noPassword,
         }));
-        callBack();
         return;
       }
 
       const lowerCase = password.toLowerCase();
 
-      if (lowerCase === "password") {
+      if (lowerCase.includes('pass')) {
         setResult((prevState) => ({
           ...prevState,
           loading: false,
           data: email,
-          errorMessage: MESSAGES.success
         }));
         callBack();
       } else {
@@ -59,9 +57,9 @@ export default () => {
           ...prevState,
           loading: false,
           error: true,
-          errorMessage: MESSAGES.wrongPassword,
+          passwordError: MESSAGES.wrongPassword,
         }));
-        callBack();
+        
       }
     }, 3000);
   };

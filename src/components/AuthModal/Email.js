@@ -12,6 +12,7 @@ const Email = ({ isFieldInvalid, setForm }) => {
         Email Address
       </label>
       <input
+        defaultValue=''
         type="email"
         name="email"
         id="email"

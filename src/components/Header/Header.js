@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import logo_white_bg from "../../assets/img/logo_white_bg.png";
-import "./header.css";
 import Button from "../Button";
 import AuthModal from "../AuthModal";
 
 const Header = () => {
+  const [username, setUsername] = useState("");
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -27,18 +27,37 @@ const Header = () => {
           <p>Help</p>
         </div>
         <div className="flex justify-between">
-          <a className="py-3 mr-5">Sign In</a>
-          <div>
-            <Button
-              label="Sign Up"
-              border="thick"
-              type="round"
-              onClick={() => setActive(!active)}
-            />
-          </div>
+          {username ? (
+            <>
+              <p>{username}</p>
+              <Button
+                label="Sign Out"
+                type="round"
+                onClick={() => setUsername("")}
+              />
+            </>
+          ) : (
+            <>
+              <a className="py-3 mr-5" href=".">
+                Sign In
+              </a>
+              <div>
+                <Button
+                  label="Sign Up"
+                  border="thick"
+                  type="round"
+                  onClick={() => setActive(!active)}
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
-      <AuthModal active={active} setActive={setActive} />
+      <AuthModal
+        active={active}
+        setActive={setActive}
+        setUsername={setUsername}
+      />
     </>
   );
 };

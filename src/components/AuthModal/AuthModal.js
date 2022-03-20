@@ -6,14 +6,15 @@ import "animate.css/animate.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast, cssTransition } from "react-toastify";
 import { Email, Password, SignIn, FormHeader } from ".";
+import './authmodal.css';
 
 const bounce = cssTransition({
   enter: "animate__animated animate__bounceIn",
   exit: "animate__animated animate__bounceOut",
 });
 
-const AuthModal = ({ active, setActive }) => {
-  const [{ data, loading, errorMessage, error }, getAuth] = useAuth();
+const AuthModal = ({ active, setActive, setUsername }) => {
+  const [{ data, loading, emailError, passwordError, error }, getAuth] = useAuth();
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     email: "",
@@ -29,7 +30,7 @@ const AuthModal = ({ active, setActive }) => {
     const mailRe =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    const passwordRe = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+    const passwordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,10}$/;
 
     const nextValidation = { ...validation };
 
@@ -68,11 +69,23 @@ const AuthModal = ({ active, setActive }) => {
     getAuth(form.email, form.password, closeModal);
   };
 
-  const closeModal = () => {
+  const closeModal = (showToast = true) => {
+    if (showToast) {
+      toast.success("Successfully logged in", {
+        transition: bounce,
+        position: toast.POSITION.BOTTOM_RIGHT
+      })
+    }
+    
     setActive(false);
     setSubmitted(false);
     setForm({ email: "", password: "" });
   };
+
+  useEffect(() => {
+    console.log(data)
+    setUsername(data)
+  }, [data, setUsername])
 
   return (
     <>
@@ -96,19 +109,16 @@ const AuthModal = ({ active, setActive }) => {
           {/* -----------*******----------- */}
           <div className="relative items-center w-full max-w-md px-6 mx-auto lg:w-1/2">
             <img
-              onClick={() => closeModal()}
+              onClick={() => closeModal(false)}
               className=" inline cursor-pointer absolute top-[-20px] right-[-40px]"
               src={close_icon}
               alt="close icon"
             />
             <div className="flex-1 my-20">
               <FormHeader />
-
               <div className="mt-8">
                 <Email isFieldInvalid={isFieldInvalid} setForm={setForm} />
-
-                <Password isFieldInvalid={isFieldInvalid} setForm={setForm} />
-
+                <Password isFieldInvalid={isFieldInvalid} setForm={setForm} passwordError={passwordError} />
                 <SignIn loading={loading} onSubmitForm={onSubmitForm} />
               </div>
             </div>
