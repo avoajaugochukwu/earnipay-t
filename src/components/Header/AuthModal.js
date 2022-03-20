@@ -4,21 +4,51 @@ import close_icon from "../../assets/img/211652_close_icon.svg";
 import Loading from "../../common/Loading/Loading";
 import useAuth from "../../hooks/useAuth";
 
+import "animate.css/animate.min.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast, cssTransition } from "react-toastify";
+
+
+const bounce = cssTransition({
+  enter: "animate__animated animate__bounceIn",
+  exit: "animate__animated animate__bounceOut"
+});
+
+// https://animista.net/
+// source animation inside style.css
+const swirl = cssTransition({
+  enter: "swirl-in-fwd",
+  exit: "swirl-out-bck"
+});
+
 const AuthModal = ({ active, setActive }) => {
   const [{ data, loading, errorMessage, error }, getAuth] = useAuth();
-  const [username, setUsername] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (userName, password) => {
     getAuth(userName, password, closeModal);
   };
 
+  const [validation, setValidation] = useState({
+    
+  })
+
   const closeModal = () => {
     setActive(!active);
+    animateCss();
   };
+
+  const animateCss = () => {
+    toast("Item added to cart", {
+      transition: bounce
+    });
+  }
 
   return (
     <>
+      <ToastContainer position="top-right" transition={bounce} />
       <div className={`auth-modal-wrapper ${active ? "open" : undefined}`} />
       <div
         className={`auth-form ${

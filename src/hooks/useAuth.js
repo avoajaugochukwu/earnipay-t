@@ -1,22 +1,26 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { useState } from "react";
 
-const ERROR_STATE = {
+const MESSAGES = {
   noUserName: "Please enter your user name",
   noPassword: "Please enter your password",
   wrongPassword: "The password you entered is wrong",
 };
 
 export default () => {
-  const [result, setResult] = useState({
+  const initialState = {
     data: "",
     loading: false,
     errorMessage: null,
     error: null,
+  }
+
+  const [result, setResult] = useState({
+    ...initialState
   });
 
   const getAuth = async (userName, password, callBack) => {
-    setResult((prevState) => ({ ...prevState, loading: true }));
+    setResult((prevState) => ({ ...initialState, loading: true }));
 
     setTimeout(() => {
       if (!userName) {
@@ -24,8 +28,9 @@ export default () => {
           ...prevState,
           loading: false,
           error: true,
-          errorMessage: ERROR_STATE.noUserName,
+          errorMessage: MESSAGES.noUserName,
         }));
+        callBack();
         return;
       }
       if (!password) {
@@ -33,27 +38,30 @@ export default () => {
           ...prevState,
           loading: false,
           error: true,
-          errorMessage: ERROR_STATE.noPassword,
+          errorMessage: MESSAGES.noPassword,
         }));
+        callBack();
         return;
       }
 
       const lowerCase = password.toLowerCase();
-      
+
       if (lowerCase === "password") {
         setResult((prevState) => ({
           ...prevState,
           loading: false,
           data: userName,
+          errorMessage: MESSAGES.success
         }));
-        callBack()
+        callBack();
       } else {
         setResult((prevState) => ({
           ...prevState,
           loading: false,
           error: true,
-          errorMessage: ERROR_STATE.wrongPassword,
+          errorMessage: MESSAGES.wrongPassword,
         }));
+        callBack();
       }
     }, 3000);
   };
