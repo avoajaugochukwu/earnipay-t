@@ -1,6 +1,5 @@
 import React from "react";
 
-import Packages from "./Packages";
 
 import hero_img from "../../assets/img/hero.svg";
 import user_img from "../../assets/img/user.svg";
@@ -9,11 +8,7 @@ import server from "../../assets/img/server.svg";
 import hero_2_img from "../../assets/img/hero_2.svg";
 import green_check_mark from "../../assets/img/green_check_mark.svg";
 import Button from "../../common/Button";
-import World from "./World";
-import Reviews from "./Reviews";
-import Subscribe from "./Subscribe";
 
-import Footer from "../Footer";
 
 const Hero = () => {
   return (
@@ -70,12 +65,12 @@ const Hero = () => {
         <div className="w-full px-10  md:w-1/2">
           <img src={hero_2_img} alt="hero" />
         </div>
-        <div className="w-full md:w-1/2 p-10 md:p-4">
-          <h3 className="text-2xl lg:text-3xl md:text-2xl font-black">
+        <div className="w-full md:w-1/2 p-10 md:p-4 md:pt-16 md:ml-16">
+          <h3 className="text-2xl md:text-4xl font-black leading-10">
             We Provide Many <br />
             Features You Can Use
           </h3>
-          <p className="mt-4 text-sm">
+          <p className="mt-4 text-sm md:mr-32">
             You can explore the features that we provide with fun and have their
             own functions each feature.
           </p>
@@ -83,26 +78,23 @@ const Hero = () => {
             <img src={green_check_mark} alt="check mark" />{" "}
             <span className="ml-4">Powerfull online protection.</span>
           </p>
-          <p className="flex mt-2 text-sm md:mt-3">
+          <p className="flex mt-2 text-sm md:mt-5">
             <img src={green_check_mark} alt="check mark" />{" "}
             <span className="ml-4">Internet without borders.</span>
           </p>
-          <p className="flex mt-2 text-sm md:mt-3">
+          <p className="flex mt-2 text-sm md:mt-5">
             <img src={green_check_mark} alt="check mark" />{" "}
             <span className="ml-4">Supercharged VPN.</span>
           </p>
-          <p className="flex mt-2 text-sm md:mt-3">
+          <p className="flex mt-2 text-sm md:mt-5">
             <img src={green_check_mark} alt="check mark" />{" "}
             <span className="ml-4">No specific time limits.</span>
           </p>
         </div>
       </div>
       {/* ******************************************************************* */}
-      <Packages />
-      <World />
-      <Reviews />
-      <Subscribe />
-      <Footer />
+      
+      
     </>
   );
 };

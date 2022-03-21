@@ -11,7 +11,7 @@ import netflix_img from '../../assets/img/netflix.svg'
 const World = () => {
   return (
     <div className="text-center bg-gray-50">
-      <h3 className="lg:text-4xl md:text-3xl font-black lg:pt-28 md:pt-12 pt-8 lg:leading-for-world">
+      <h3 className="lg:text-4xl md:text-3xl font-black lg:pt-10 md:pt-12 pt-8 lg:leading-for-world">
         Huge Global Network <br />
         of Fast VPN
       </h3>
@@ -19,7 +19,7 @@ const World = () => {
         See LaslesVPN everywhere to make it easier for you when you move <br />{" "}
         locations.
       </p>
-      <div className="lg:mt-36 md:mt-12 mt-5">
+      <div className="lg:mt-16 md:mt-12 mt-5">
         <img className="w-5/6 mx-auto" src={world_img} alt="world " />
       </div>
       {/* +++++++++++++++++++++++++++++++++++++++++++++++++++++ */}

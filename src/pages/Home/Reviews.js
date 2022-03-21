@@ -12,9 +12,9 @@ import reviewleft from "../../assets/img/reviewleft.svg";
 
 const Reviews = () => {
   return (
-    <div className=" bg-gray-50">
+    <div className=" bg-gray-50 pb-32">
       <div className="text-center">
-        <h3 className="lg:text-4xl md:text-3xl font-black lg:pt-28 md:pt-12 pt-12 lg:leading-for-world">
+        <h3 className="lg:text-4xl md:text-3xl font-black lg:pt-16 md:pt-12 pt-12 lg:leading-for-world">
           Trusted by Thousands of <br /> Happy Customer
         </h3>
         <p className="lg:mt-8 md:mt-4 mt-4">
@@ -25,7 +25,7 @@ const Reviews = () => {
       </div>
 
       <div>
-        <div className="md:flex justify-between mt-10 lg:mt-20 md:mt-10 px-5 md:px-0 md:ml-[8.5rem] md:mx-8 lg:gap-x-8 md:gap-x-3 ">
+        <div className="md:flex justify-between mt-10 lg:mt-20 md:mt-10 px-5 md:px-0 md:ml-[8.5rem] lg:gap-x-8 md:gap-x-3 ">
           <div
             className="w-full md:w-1/3 p-4 my-3 lg:p-6 md:p-2 cursor-pointer  rounded-xl"
             style={{ border: "2px solid #F53838" }}
