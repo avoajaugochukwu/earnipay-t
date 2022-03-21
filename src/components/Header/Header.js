@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="sm:flex font-extralight justify-between lg:mt-12 lg:mx-[8.5rem] md:mx-8 md:mt-8">
+      <div className="mt-8 sm:flex font-extralight justify-between lg:mt-12 lg:mx-[8.5rem] md:mx-8 md:mt-8">
         <img className="block mx-auto md:mx-0" src={logo_white_bg} alt="logo" />
         <div className="flex px-3 md:w-1/2 justify-between text-gray-500 pt-3">
           <p>About</p>

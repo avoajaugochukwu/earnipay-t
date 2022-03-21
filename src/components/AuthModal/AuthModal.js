@@ -109,7 +109,7 @@ const AuthModal = ({ active, setActive, setUsername }) => {
           <div className="relative items-center w-full max-w-md px-6 mx-auto lg:w-1/2">
             <img
               onClick={() => closeModal(false)}
-              className=" inline cursor-pointer absolute top-[-20px] right-[-40px]"
+              className=" inline cursor-pointer absolute -top-5 left-[90%] md:top-[-20px] md:right-[-40px]"
               src={close_icon}
               alt="close icon"
             />
