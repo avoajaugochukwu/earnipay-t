@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex font-extralight justify-between mt-12 mx-[8.5rem] bg-gray-200">
+      <div className="flex font-extralight justify-between lg:mt-12 lg:mx-[8.5rem] md:mx-8 md:mt-8">
         <img style={{ width: "12%" }} src={logo_white_bg} alt="logo" />
         <div className="flex w-1/2 justify-between text-gray-500 pt-3">
           <p>About</p>

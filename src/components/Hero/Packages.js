@@ -9,11 +9,11 @@ import Button from "../../common/Button";
 const Packages = () => {
   return (
     <div className="bg-gray-50 py-10 mt-20">
-      <div className="flex justify-between mt-20 mx-[8.5rem] gap-x-8 ">
-        <div className="w-1/3 px-10 cursor-pointer border-2 border-gray-300 rounded-xl">
-          <img className="mx-auto mt-20" src={free_img} alt="free" />
-          <p className="text-center mt-10 font-black text-lg">Free Plan</p>
-          <div className="w-4/5 mx-auto  mt-10 h-72">
+      <div className="flex justify-between mt-20 lg:mx-[8.5rem] md:mx-8 md:mt-6 lg:gap-x-8 md:gap-x-4">
+        <div className="w-1/3 lg:px-10 md:px-2 cursor-pointer border-2 border-gray-300 rounded-xl">
+          <img className="mx-auto lg:mt-20 md:mt-10" src={free_img} alt="free" />
+          <p className="text-center lg:mt-10 md:mt-5 font-black text-lg">Free Plan</p>
+          <div className="w-4/5 mx-auto lg:mt-10 md:mt-5 lg:h-72 md:h-80">
             <p className="flex">
               <img src={check_mark} alt="check_mark" />
               <span className="ml-4">Unlimited Bandwitch</span>
@@ -41,10 +41,10 @@ const Packages = () => {
             />
           </div>
         </div>
-        <div className="w-1/3 px-10 cursor-pointer border-2 border-gray-300 rounded-xl">
-          <img className="mx-auto mt-20" src={standard_img} alt="free" />
-          <p className="text-center mt-10 font-black text-lg">Standard Plan</p>
-          <div className="w-4/5 mx-auto  mt-10 h-72">
+        <div className="w-1/3 lg:px-10 md:px-2 cursor-pointer border-2 border-gray-300 rounded-xl">
+          <img className="mx-auto lg:mt-20 md:mt-10" src={standard_img} alt="free" />
+          <p className="text-center lg:mt-10 md:mt-5 font-black text-lg">Standard Plan</p>
+          <div className="w-4/5 mx-auto lg:mt-10 md:mt-5 lg:h-72 md:h-80">
             <p className="flex">
               <img src={check_mark} alt="check_mark" />
               <span className="ml-4">Unlimited Bandwitch</span>
@@ -79,12 +79,12 @@ const Packages = () => {
           </div>
         </div>
         <div
-          className="w-1/3 px-10 cursor-pointer rounded-xl"
+          className="w-1/3 lg:px-10 md:px-2 cursor-pointer rounded-xl"
           style={{ border: "2px solid #F53838" }}
         >
-          <img className="mx-auto mt-20" src={free_img} alt="free" />
-          <p className="text-center mt-10 font-black text-lg">Free Plan</p>
-          <div className="w-4/5 mx-auto  mt-10 h-72">
+          <img className="mx-auto lg:mt-20 md:mt-10" src={premium_img} alt="free" />
+          <p className="text-center lg:mt-10 md:mt-5 font-black text-lg">Free Plan</p>
+          <div className="w-4/5 mx-auto lg:mt-10 md:mt-5 lg:h-72 md:h-80">
             <p className="flex">
               <img src={check_mark} alt="check_mark" />
               <span className="ml-4">Unlimited Bandwitch</span>
@@ -117,7 +117,7 @@ const Packages = () => {
             </h3>
             <Button
               label="&nbsp;&nbsp;&nbsp;Select&nbsp;&nbsp;&nbsp;"
-              border="fill"
+              border="none"
               type="round"
             />
           </div>
