@@ -14,10 +14,10 @@ const Reviews = () => {
   return (
     <div className=" bg-gray-50">
       <div className="text-center">
-        <h3 className="text-4xl font-black pt-28 leading-for-world">
+        <h3 className="lg:text-4xl md:text-3xl font-black lg:pt-28 md:pt-12 pt-12 lg:leading-for-world">
           Trusted by Thousands of <br /> Happy Customer
         </h3>
-        <p className="mt-8">
+        <p className="lg:mt-8 md:mt-4 mt-4">
           These are the stories of our customers who have joined us with great{" "}
           <br />
           pleasure when using this crazy feature.
@@ -25,15 +25,15 @@ const Reviews = () => {
       </div>
 
       <div>
-        <div className="flex justify-between mt-20 ml-[8.5rem] gap-x-8 ">
+        <div className="md:flex justify-between mt-10 lg:mt-20 md:mt-10 px-5 md:px-0 md:ml-[8.5rem] md:mx-8 lg:gap-x-8 md:gap-x-3 ">
           <div
-            className="w-1/3 p-6 cursor-pointer  rounded-xl"
+            className="w-full md:w-1/3 p-4 my-3 lg:p-6 md:p-2 cursor-pointer  rounded-xl"
             style={{ border: "2px solid #F53838" }}
           >
             <div className="flex">
               <div className="flex w-4/5">
                 <img className="" src={viezh} alt="viezh" />
-                <div className="ml-6 ">
+                <div className="lg:ml-6 md:ml-3">
                   <p className="font-black">Viezh Robert</p>
                   <p className="font-extralight text-gray-500">
                     Warsaw, Poland
@@ -54,11 +54,11 @@ const Reviews = () => {
             </p>
           </div>
           {/* --------------------------------------------- */}
-          <div className="w-1/3 p-6 cursor-pointer border-2 border-gray-300 rounded-xl">
+          <div className="w-full md:w-1/3 p-4 my-3 lg:p-6 md:p-2 cursor-pointer border-2 border-gray-300 rounded-xl">
             <div className="flex">
               <div className="flex w-4/5">
                 <img className="" src={yessica} alt="viezh" />
-                <div className="ml-6 ">
+                <div className="lg:ml-6 md:ml-3">
                   <p className="font-black">Yessica Christy</p>
                   <p className="font-extralight text-gray-500">Shanxi, China</p>
                 </div>
@@ -76,11 +76,11 @@ const Reviews = () => {
             </p>
           </div>
           {/* --------------------------------------------- */}
-          <div className="w-1/3 p-6 cursor-pointer border-2 border-gray-300 rounded-xl">
+          <div className="w-full md:w-1/3 p-4 my-3 lg:p-6 md:p-2 cursor-pointer border-2 border-gray-300 rounded-xl">
             <div className="flex">
               <div className="flex w-4/5">
                 <img className="" src={kimyoung} alt="viezh" />
-                <div className="ml-6 ">
+                <div className="lg:ml-6 md:ml-3">
                   <p className="font-black">Kim Young Jou</p>
                   <p className="font-extralight text-gray-500">
                     Seoul, South Korea
@@ -102,27 +102,27 @@ const Reviews = () => {
         </div>
       </div>
       {/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
-      <div className="flex justify-between mt-5 mx-[8.5rem]">
-        <div className="flex mt-5">
+      <div className="flex justify-between px-5 md:px-0 lg:mt-5 md:mt-2 lg:mx-[8.5rem] md:mx-8 ">
+        <div className="flex lg:mt-5 md:mt-2">
           <div>
-            <img src={rdots4} alt="rdots4" />
+            <img className="lg:w-full md:11/12" src={rdots4} alt="rdots4" />
           </div>
           <div>
-            <img src={rdots1} alt="rdots1" />
+            <img className="lg:w-full md:11/12" src={rdots1} alt="rdots1" />
           </div>
           <div>
-            <img src={rdots2} alt="rdots2" />
+            <img className="lg:w-full md:11/12" src={rdots2} alt="rdots2" />
           </div>
           <div>
-            <img src={rdots3} alt="rdots3" />
+            <img className="lg:w-full md:11/12" src={rdots3} alt="rdots3" />
           </div>
         </div>
         <div className="flex">
           <div>
-            <img src={reviewleft} alt="reviewleft" />
+            <img className="w-6/12 lg:w-full md:w-8/12" src={reviewleft} alt="reviewleft" />
           </div>
-          <div className="ml-3">
-            <img src={reviewright} alt="reviewright" />
+          <div className="-ml-6 md:ml-3">
+            <img className="w-6/12 lg:w-full md:w-8/12" src={reviewright} alt="reviewright" />
           </div>
         </div>
       </div>

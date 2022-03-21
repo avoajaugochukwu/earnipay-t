@@ -7,8 +7,8 @@ import Instagram from "../../assets/img/Instagram.svg";
 const Footer = () => {
   return (
     <div>
-      <div className="flex mx-[8.5rem] pt-10">
-        <div className="w-1/2 pr-48">
+      <div className="md:flex lg:mx-[8.5rem] md:mx-8 md:mt-6 pt-10 m-4">
+        <div className="w-full md:w-1/2 md:pr-48 ">
           <img src={logo_white_bg} alt="logo" />
           <p className="mt-4">
             <strong>LaslesVPN</strong> is a private virtual network that has
@@ -22,8 +22,8 @@ const Footer = () => {
           <p className="text-gray-400">©2020LaslesVPN</p>
         </div>
         {/*  */}
-        <div className="flex w-1/2">
-          <div className="w-1/3">
+        <div className="md:flex md:w-1/2 w-full mt-10">
+          <div className="md:flex md:w-1/3 w-full mb-10">
             <p className="text-lg font-black">Product</p>
             <p className="mt-4 font-extralight">Download </p>
             <p className="mt-4 font-extralight">Pricing</p>
@@ -33,7 +33,7 @@ const Footer = () => {
             <p className="mt-4 font-extralight">Blog</p>
           </div>
           {/*  */}
-          <div className="w-1/3">
+          <div className="md:flex md:w-1/3 w-full mb-10">
             <p className="text-lg font-black">Engage</p>
             <p className="mt-4 font-extralight">LaslesVPN ? </p>
             <p className="mt-4 font-extralight">FAQ</p>
@@ -43,7 +43,7 @@ const Footer = () => {
             <p className="mt-4 font-extralight">Terms of Service</p>
           </div>
           {/*  */}
-          <div className="w-1/3">
+          <div className="md:flex md:w-1/3 w-full mb-10">
             <p className="text-lg font-black">Earn Money</p>
             <p className="mt-4 font-extralight">Affiliate</p>
             <p className="mt-4 font-extralight">Become Partner</p>
@@ -51,6 +51,11 @@ const Footer = () => {
         </div>
       </div>
 
+      <div className="mt-60"></div>
+      <div className="mb-60"></div>
+      <div className="mt-60"></div>
+      <div className="mt-60"></div>
+      <div className="mt-60"></div>
       <div className="mt-60"></div>
     </div>
   );

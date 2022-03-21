@@ -53,3 +53,17 @@
   background-color: #F53838;
   color: #fff;
 }
+
+@media only screen and (max-width: 640px) {
+  .button--square {
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 10px;
+    padding: 6px 30px;
+  }
+  .button--round {
+    font-size: 10px;
+    padding: 3px 20px;
+    border-radius: 25px;
+  }
+}

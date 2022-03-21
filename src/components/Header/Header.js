@@ -17,16 +17,16 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex font-extralight justify-between lg:mt-12 lg:mx-[8.5rem] md:mx-8 md:mt-8">
-        <img style={{ width: "12%" }} src={logo_white_bg} alt="logo" />
-        <div className="flex w-1/2 justify-between text-gray-500 pt-3">
+      <div className="sm:flex font-extralight justify-between lg:mt-12 lg:mx-[8.5rem] md:mx-8 md:mt-8">
+        <img className="block mx-auto md:mx-0" src={logo_white_bg} alt="logo" />
+        <div className="flex px-3 md:w-1/2 justify-between text-gray-500 pt-3">
           <p>About</p>
           <p>Features</p>
           <p>Pricing</p>
           <p>Testimonial</p>
           <p>Help</p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex mt-4 md:mt-0 w-1/2 mx-auto md:w-full md:justify-between">
           {username ? (
             <>
               <p>{username}</p>
@@ -38,7 +38,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <a className="py-3 mr-5" href=".">
+              <a className="py-1 md:py-3 mr-5" href=".">
                 Sign In
               </a>
               <div>

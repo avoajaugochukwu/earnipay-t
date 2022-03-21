@@ -18,25 +18,25 @@ import Footer from "../Footer";
 const Hero = () => {
   return (
     <>
-      <div className="flex justify-between lg:mt-16 lg:mx-[8.5rem] md:mx-8 md:mt-6">
-        <div className="w-1/2 p-10 md:p-0 md:pr-4">
-          <h1 className="text-5xl md:text-4xl leading-for-hero">
+      <div className="md:flex justify-between lg:mt-16 lg:mx-[8.5rem] md:mx-8 md:mt-6">
+        <div className="w-full md:w-1/2 p-10 md:p-0 md:pr-4">
+          <h1 className="text-3xl lg:text-5xl md:text-4xl md:leading-for-hero">
             Want anything to be easy with <strong>LaslesVPN.</strong>
           </h1>
-          <p className="mt-7 mb-14 md:mt-4 md:mb-5">
+          <p className="mt-5 lg:mt-7  mb-5 lg:mb-14 md:mt-4 md:mb-5">
             Provide a network for all your needs with ease and fun using{" "}
             <strong>LaslesVPN</strong> discover interesting features from us.
           </p>
           <Button primary label="Get Started" type="square" />
         </div>
-        <div className="w-1/2">
+        <div className="w-full px-10 md:w-1/2">
           <img src={hero_img} alt="hero" />
         </div>
       </div>
       {/* ******************************************************************* */}
       <div className=" lg:mt-16 hero-box--shadow lg:mx-[8.5rem] md:mx-8 md:mt-6 rounded-3xl">
-        <div className="flex justify-between py-8 ">
-          <div className="w-1/3 h-32 border-r-2 border-gray-200">
+        <div className=" md:flex justify-between py-8 ">
+          <div className="w-full sm:w-1/3 h-32 md:border-r-2 md:border-gray-200">
             <div className="flex py-8 w-1/2 mx-auto">
               <img src={user_img} alt="user img" className="w-14 h-14" />
               <div className="ml-7 md:ml-2">
@@ -45,7 +45,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div className="w-1/3 h-32 border-r-2 border-gray-200">
+          <div className="w-full sm:w-1/3 h-32 md:border-r-2 md:border-gray-200">
             <div className="flex py-8 w-1/2 mx-auto">
               <img src={location_img} alt="user img" className="w-14 h-14" />
               <div className="ml-7 md:ml-2">
@@ -54,7 +54,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div className="w-1/3 h-32">
+          <div className="w-full sm:w-1/3 h-32">
             <div className="flex py-8  w-1/2 mx-auto">
               <img src={server} alt="user img" className="w-14 h-14" />
               <div className="ml-7 md:ml-2">
@@ -66,12 +66,12 @@ const Hero = () => {
         </div>
       </div>
       {/* ******************************************************************* */}
-      <div className="flex justify-between mt-20 lg:mx-[8.5rem] md:mx-8 md:mt-6">
-        <div className="w-1/2">
+      <div className="md:flex justify-between mt-10 lg:mt-20 lg:mx-[8.5rem] md:mx-8 md:mt-6">
+        <div className="w-full px-10  md:w-1/2">
           <img src={hero_2_img} alt="hero" />
         </div>
-        <div className="w-1/2 lg:p-10 md:p-4">
-          <h3 className="lg:text-3xl md:text-2xl font-black">
+        <div className="w-full md:w-1/2 p-10 md:p-4">
+          <h3 className="text-2xl lg:text-3xl md:text-2xl font-black">
             We Provide Many <br />
             Features You Can Use
           </h3>
@@ -79,19 +79,19 @@ const Hero = () => {
             You can explore the features that we provide with fun and have their
             own functions each feature.
           </p>
-          <p className="flex lg:mt-8 md:mt-4">
+          <p className="flex mt-2 text-sm lg:mt-8 md:mt-4">
             <img src={green_check_mark} alt="check mark" />{" "}
             <span className="ml-4">Powerfull online protection.</span>
           </p>
-          <p className="flex mt-5 md:mt-3">
+          <p className="flex mt-2 text-sm md:mt-3">
             <img src={green_check_mark} alt="check mark" />{" "}
             <span className="ml-4">Internet without borders.</span>
           </p>
-          <p className="flex mt-5 md:mt-3">
+          <p className="flex mt-2 text-sm md:mt-3">
             <img src={green_check_mark} alt="check mark" />{" "}
             <span className="ml-4">Supercharged VPN.</span>
           </p>
-          <p className="flex mt-5 md:mt-3">
+          <p className="flex mt-2 text-sm md:mt-3">
             <img src={green_check_mark} alt="check mark" />{" "}
             <span className="ml-4">No specific time limits.</span>
           </p>

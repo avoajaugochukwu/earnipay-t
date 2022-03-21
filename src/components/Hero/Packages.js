@@ -8,12 +8,12 @@ import Button from "../../common/Button";
 
 const Packages = () => {
   return (
-    <div className="bg-gray-50 py-10 mt-20">
-      <div className="flex justify-between mt-20 lg:mx-[8.5rem] md:mx-8 md:mt-6 lg:gap-x-8 md:gap-x-4">
-        <div className="w-1/3 lg:px-10 md:px-2 cursor-pointer border-2 border-gray-300 rounded-xl">
-          <img className="mx-auto lg:mt-20 md:mt-10" src={free_img} alt="free" />
-          <p className="text-center lg:mt-10 md:mt-5 font-black text-lg">Free Plan</p>
-          <div className="w-4/5 mx-auto lg:mt-10 md:mt-5 lg:h-72 md:h-80">
+    <div className="bg-gray-50 py-5 lg:py-10 lg:mt-20">
+      <div className="md:flex justify-between mt-10 lg:mt-20 lg:mx-[8.5rem] md:mx-8 md:mt-6 lg:gap-x-8 md:gap-x-4">
+        <div className="w-11/12 m-4 md:w-1/3 lg:px-10 md:px-2 cursor-pointer border-2 border-gray-300 rounded-xl">
+          <img className="mx-auto mt-5 lg:mt-20 md:mt-10" src={free_img} alt="free" />
+          <p className="text-center lg:mt-10 md:mt-5 font-black text-lg my-4">Free Plan</p>
+          <div className="w-4/5 mx-auto lg:mt-10 md:mt-5 lg:h-72 md:h-80 h-64">
             <p className="flex">
               <img src={check_mark} alt="check_mark" />
               <span className="ml-4">Unlimited Bandwitch</span>
@@ -41,10 +41,10 @@ const Packages = () => {
             />
           </div>
         </div>
-        <div className="w-1/3 lg:px-10 md:px-2 cursor-pointer border-2 border-gray-300 rounded-xl">
-          <img className="mx-auto lg:mt-20 md:mt-10" src={standard_img} alt="free" />
-          <p className="text-center lg:mt-10 md:mt-5 font-black text-lg">Standard Plan</p>
-          <div className="w-4/5 mx-auto lg:mt-10 md:mt-5 lg:h-72 md:h-80">
+        <div className="w-11/12 m-4 md:w-1/3 lg:px-10 md:px-2 cursor-pointer border-2 border-gray-300 rounded-xl">
+          <img className="mx-auto mt-5 lg:mt-20 md:mt-10" src={standard_img} alt="free" />
+          <p className="text-center lg:mt-10 md:mt-5 font-black text-lg my-4">Standard Plan</p>
+          <div className="w-4/5 mx-auto lg:mt-10 md:mt-5 lg:h-72 md:h-80 h-64">
             <p className="flex">
               <img src={check_mark} alt="check_mark" />
               <span className="ml-4">Unlimited Bandwitch</span>
@@ -79,12 +79,12 @@ const Packages = () => {
           </div>
         </div>
         <div
-          className="w-1/3 lg:px-10 md:px-2 cursor-pointer rounded-xl"
+          className="w-11/12 mx-4 md:w-1/3 lg:px-10 md:px-2 cursor-pointer rounded-xl"
           style={{ border: "2px solid #F53838" }}
         >
-          <img className="mx-auto lg:mt-20 md:mt-10" src={premium_img} alt="free" />
-          <p className="text-center lg:mt-10 md:mt-5 font-black text-lg">Free Plan</p>
-          <div className="w-4/5 mx-auto lg:mt-10 md:mt-5 lg:h-72 md:h-80">
+          <img className="mx-auto mt-5 lg:mt-20 md:mt-10" src={premium_img} alt="free" />
+          <p className="text-center lg:mt-10 md:mt-5 font-black text-lg my-4">Free Plan</p>
+          <div className="w-4/5 mx-auto lg:mt-10 md:mt-5 lg:h-72 md:h-80 h-64">
             <p className="flex">
               <img src={check_mark} alt="check_mark" />
               <span className="ml-4">Unlimited Bandwitch</span>
