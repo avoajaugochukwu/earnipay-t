@@ -13,7 +13,7 @@ const bounce = cssTransition({
   exit: "animate__animated animate__bounceOut",
 });
 
-const AuthModal = ({ active, setActive, setUsername }) => {
+const AuthModal = ({ showModal, setShowModal, setUsername }) => {
   const [{ data, loading, passwordError }, getAuth] = useAuth();
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
@@ -77,7 +77,7 @@ const AuthModal = ({ active, setActive, setUsername }) => {
       })
     }
     
-    setActive(false);
+    setShowModal(false);
     setSubmitted(false);
     setForm({ email: "", password: "" });
   };
@@ -89,10 +89,10 @@ const AuthModal = ({ active, setActive, setUsername }) => {
   return (
     <>
       <ToastContainer position="top-right" transition={bounce} />
-      <div className={`auth-modal-wrapper ${active ? "open" : ""}`} />
+      <div className={`auth-modal-wrapper ${showModal ? "open" : ""}`} />
       <div
         className={`auth-form ${
-          active ? "open" : ""
+          showModal ? "open" : ""
         } bg-white lg:w-2/3 mx-auto`}
       >
         <div className="flex justify-center h-3/4">
