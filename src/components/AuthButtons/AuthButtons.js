@@ -1,7 +1,11 @@
 import Button from "../../common/Button";
 
-const AuthButtons = ({ username, setUsername, showModal, setShowModal }) => {
-  
+const AuthButtons = ({ setActive, username, setUsername, showModal, setShowModal }) => {
+  const handleClick = () => {
+    setActive(false)
+    setShowModal(!showModal);
+  };
+
   return (
     <div className="flex mt-4 md:mt-0 pl-10 w-full md:mx-auto md:w-56 md:justify-between">
       {username ? (
@@ -15,16 +19,19 @@ const AuthButtons = ({ username, setUsername, showModal, setShowModal }) => {
         </>
       ) : (
         <>
-          <a className="py-1 md:py-3 mr-5" href=".">
+          <p
+            className="py-1 md:py-3 mr-5"
+            href="."
+            onClick={() => handleClick()}
+          >
             Sign In
-          </a>
+          </p>
           <div>
             <Button
               label="Sign Up"
               border="thick"
               type="round"
-              onClick={() => setShowModal(!showModal)}
-              // onClick={() => close()}
+              onClick={() => handleClick()}
             />
           </div>
         </>

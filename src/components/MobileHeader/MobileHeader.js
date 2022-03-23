@@ -15,7 +15,7 @@ const MobileHeader = ({ username, setUsername, showModal, setShowModal }) => {
   }, [active]);
 
   return (
-    <div className="block md:hidden pt-8 pb-8">
+    <div className="block md:hidden pt-8 pb-12">
       <div className="">
         <img className="mobileheaderlogo block ml-10 md:mr-20" src={logo} alt="logo" />
         {/*  */}
@@ -37,6 +37,7 @@ const MobileHeader = ({ username, setUsername, showModal, setShowModal }) => {
         showModal={showModal}
         setShowModal={setShowModal}
         active={active}
+        setActive={setActive}
       />
     </div>
   );

@@ -93,7 +93,7 @@ const AuthModal = ({ showModal, setShowModal, setUsername }) => {
       <div
         className={`auth-form ${
           showModal ? "open" : ""
-        } bg-white lg:w-2/3 mx-auto`}
+        } bg-white lg:w-2/3 mx-auto mt-20 md:mt-auto`}
       >
         <div className="flex justify-center h-3/4">
           <div
@@ -109,7 +109,7 @@ const AuthModal = ({ showModal, setShowModal, setUsername }) => {
           <div className="relative items-center w-full max-w-md px-6 mx-auto lg:w-1/2">
             <img
               onClick={() => closeModal(false)}
-              className=" inline cursor-pointer absolute -top-5 left-[90%] md:top-[-20px] md:right-[-40px]"
+              className=" inline cursor-pointer absolute -top-5 left-[95%] md:top-[-20px] md:right-[-40px]"
               src={close_icon}
               alt="close icon"
             />

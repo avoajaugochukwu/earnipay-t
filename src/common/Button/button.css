@@ -58,12 +58,12 @@
   .button--square {
     font-weight: bold;
     border-radius: 10px;
-    font-size: 12px;
-    padding: 10px 40px;
+    /* font-size: 12px; */
+    padding: 10px 45px;
   }
   .button--round {
     font-size: 12px;
-    padding: 10px 30px;
+    padding: 10px 35px;
     border-radius: 25px;
   }
 }

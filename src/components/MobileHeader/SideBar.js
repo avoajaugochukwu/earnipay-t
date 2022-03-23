@@ -4,6 +4,7 @@ import Link from "./Link";
 
 const SideBar = ({
   active,
+  setActive,
   username,
   setUsername,
   showModal,
@@ -27,6 +28,8 @@ const SideBar = ({
             {/*  */}
             <div className="">
               <AuthButtons
+                active={active}
+                setActive={setActive}
                 username={username}
                 setUsername={setUsername}
                 showModal={showModal}
