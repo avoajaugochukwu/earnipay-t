@@ -21,8 +21,8 @@ const Email = ({ isFieldInvalid, setForm }) => {
           setForm((form) => ({ ...form, email: value }))
         }
         className={` ${
-          isFieldInvalid("email") ? "border-red-400 border-2" : ""
-        } block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md`}
+          isFieldInvalid("email") ? "border-red-400 " : "border-gray-200"
+        } block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-2 rounded-md`}
       />
     </div>
   );

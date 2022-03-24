@@ -15,7 +15,7 @@ const Hero = () => {
     <>
       <div className="md:flex justify-between lg:mt-16 lg:mx-[8.5rem] md:mx-8 md:mt-6">
         <div className="w-full md:w-1/2 p-10 md:p-0 md:pr-4">
-          <h1 className="text-3xl lg:text-5xl md:text-4xl leading-10 md:leading-for-hero">
+          <h1 className="text-3xl lg:text-5xl md:text-4xl leading-10 lg:leading-for-hero">
             Want anything to be easy with <strong>LaslesVPN.</strong>
           </h1>
           <p className="mt-5 leading-7 lg:mt-7  mb-5 lg:mb-14 md:mt-4 md:mb-5">

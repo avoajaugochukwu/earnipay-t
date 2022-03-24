@@ -28,6 +28,7 @@ const SideBar = ({
             {/*  */}
             <div className="">
               <AuthButtons
+                sideBar
                 active={active}
                 setActive={setActive}
                 username={username}

@@ -1,6 +1,12 @@
 import React from "react";
 
-const Password = ({ isFieldInvalid, setForm, passwordError }) => {
+const Password = ({
+  validation,
+  form,
+  isFieldInvalid,
+  setForm,
+  passwordError,
+}) => {
   return (
     <div className="mt-6">
       <div className="flex justify-between mb-2">
@@ -21,7 +27,7 @@ const Password = ({ isFieldInvalid, setForm, passwordError }) => {
       </div>
 
       <input
-        defaultValue=""
+        value={form.password}
         type="password"
         name="password"
         id="password"
@@ -31,9 +37,9 @@ const Password = ({ isFieldInvalid, setForm, passwordError }) => {
         }
         className={`${
           passwordError || isFieldInvalid("password")
-            ? "border-red-400 border-2"
-            : ""
-        } block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md`}
+            ? "border-red-400 "
+            : "border-gray-200"
+        } block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 border-2 bg-white rounded-md`}
       />
       {isFieldInvalid("password") && (
         <p className="text-xs text-red-400 mt-2">
@@ -47,6 +53,38 @@ const Password = ({ isFieldInvalid, setForm, passwordError }) => {
           Your pass word does not contain the phrase pass
         </p>
       )}
+      {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
+      <div className="mt-6">
+        <label
+          htmlFor="password"
+          className={`text-sm text-gray-600 ${
+            passwordError || isFieldInvalid("password2") ? "text-red-400" : ""
+          } `}
+        >
+          Enter Password Again
+        </label>
+        <input
+          value={form.password2}
+          type="password"
+          name="password2"
+          id="password2"
+          placeholder="Enter Password Again"
+          onChange={({ target: { value } }) =>
+            setForm((form) => ({ ...form, password2: value }))
+          }
+          className={`${
+            passwordError || isFieldInvalid("password2")
+              ? "border-red-400 outline-none focus:border-red-400"
+              : "border-gray-200 focus:border-gray-200"
+          } block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 border-2 bg-white rounded-md`}
+        />
+        {!validation.password2 && (
+          <p className="text-xs text-red-400 mt-2">
+            Passwords must be the same
+          </p>
+        )}
+        {console.log(isFieldInvalid("password2"), "isFieldInvalid(password2)")}
+      </div>
     </div>
   );
 };

@@ -13,17 +13,20 @@ const bounce = cssTransition({
   exit: "animate__animated animate__bounceOut",
 });
 
-const AuthModal = ({ showModal, setShowModal, setUsername }) => {
+const AuthModal = ({ showModal, setShowModal, setUsername, signUp }) => {
   const [{ data, loading, passwordError }, getAuth] = useAuth();
   const [submitted, setSubmitted] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(signUp)
   const [form, setForm] = useState({
     email: "",
     password: "",
+    password2: ""
   });
 
   const [validation, setValidation] = useState({
     email: undefined,
     password: undefined,
+    password2: undefined
   });
 
   const validateForm = () => {
@@ -36,6 +39,8 @@ const AuthModal = ({ showModal, setShowModal, setUsername }) => {
 
     nextValidation.email = mailRe.test(form.email);
     nextValidation.password = passwordRe.test(form.password);
+
+    nextValidation.password2 = form.password.length > 0 ? form.password === form.password2 && !!passwordRe.test(form.password2) : true
 
     setValidation(nextValidation);
     return nextValidation;
@@ -79,7 +84,7 @@ const AuthModal = ({ showModal, setShowModal, setUsername }) => {
     
     setShowModal(false);
     setSubmitted(false);
-    setForm({ email: "", password: "" });
+    setForm({ email: "", password: "", password2: "" });
   };
 
   useEffect(() => {
@@ -117,7 +122,7 @@ const AuthModal = ({ showModal, setShowModal, setUsername }) => {
               <FormHeader />
               <div className="mt-8">
                 <Email isFieldInvalid={isFieldInvalid} setForm={setForm} />
-                <Password isFieldInvalid={isFieldInvalid} setForm={setForm} passwordError={passwordError} />
+                <Password validation={validation} submitted={submitted} form={form} isFieldInvalid={isFieldInvalid} setForm={setForm} passwordError={passwordError} />
                 <SignIn loading={loading} onSubmitForm={onSubmitForm} />
               </div>
             </div>
