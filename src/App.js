@@ -1,10 +1,13 @@
 import Home from "./pages/Home";
+import AuthProvider from "./store/context/AuthContextProvider";
 
 function App() {
   return (
-    <div className="font-rubik">
-      <Home />
-    </div>
+    <AuthProvider>
+      <div className="font-rubik">
+        <Home />
+      </div>
+    </AuthProvider>
     // <div className="">
     //   {" "}<Button primary label='Get Started' type="square" />
     //   <br />

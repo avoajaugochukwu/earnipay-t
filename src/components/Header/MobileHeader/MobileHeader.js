@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../store/context/AuthContextProvider";
 import "./MobileHeader.css";
 import SideBar from "./SideBar";
-import logo from "../../assets/img/logo.svg";
+import logo from "../../../assets/img/logo.svg";
 
-const MobileHeader = ({ username, setUsername, showModal, setShowModal }) => {
+const MobileHeader = ({ username, setUsername, showModal, setShowModal, setShowSignInModal }) => {
   const [active, setActive] = useState(false);
+  const auth = useContext(AuthContext);
 
   useEffect(() => {
     if (active) {
@@ -34,8 +36,9 @@ const MobileHeader = ({ username, setUsername, showModal, setShowModal }) => {
       <SideBar
         username={username}
         setUsername={setUsername}
-        showModal={showModal}
+        
         setShowModal={setShowModal}
+        setShowSignInModal={setShowSignInModal}
         active={active}
         setActive={setActive}
       />

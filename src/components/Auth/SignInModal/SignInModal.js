@@ -1,46 +1,44 @@
-import React, { useEffect, useState } from "react";
-import close_icon from "../../assets/img/211652_close_icon.svg";
-import useAuth from "../../hooks/useAuth";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../store/context/AuthContextProvider";
+import close_icon from "../../../assets/img/211652_close_icon.svg";
+import useAuth from "../../../hooks/useAuth";
 import { isFormValid } from "./auth.helpers";
 import "animate.css/animate.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast, cssTransition } from "react-toastify";
 import { Email, Password, SignIn, FormHeader } from ".";
-import './authmodal.css';
+import "./authmodal.css";
 
 const bounce = cssTransition({
   enter: "animate__animated animate__bounceIn",
   exit: "animate__animated animate__bounceOut",
 });
 
-const AuthModal = ({ showModal, setShowModal, setUsername, signUp }) => {
+const SignInModal = ({ showSignInModal, setShowSignInModal }) => {
+  const auth = useContext(AuthContext);
+  
   const [{ data, loading, passwordError }, getAuth] = useAuth();
   const [submitted, setSubmitted] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(signUp)
   const [form, setForm] = useState({
     email: "",
     password: "",
-    password2: ""
   });
 
   const [validation, setValidation] = useState({
     email: undefined,
     password: undefined,
-    password2: undefined
   });
 
   const validateForm = () => {
     const mailRe =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    const passwordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,10}$/;
+    const passwordRe = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/;
 
     const nextValidation = { ...validation };
 
     nextValidation.email = mailRe.test(form.email);
     nextValidation.password = passwordRe.test(form.password);
-
-    nextValidation.password2 = form.password.length > 0 ? form.password === form.password2 && !!passwordRe.test(form.password2) : true
 
     setValidation(nextValidation);
     return nextValidation;
@@ -78,27 +76,27 @@ const AuthModal = ({ showModal, setShowModal, setUsername, signUp }) => {
     if (showToast) {
       toast.success("Successfully logged in", {
         transition: bounce,
-        position: toast.POSITION.BOTTOM_RIGHT
-      })
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     }
-    
-    setShowModal(false);
+
+    setShowSignInModal(false);
     setSubmitted(false);
-    setForm({ email: "", password: "", password2: "" });
+    setForm({ email: "", password: "" });
   };
 
   useEffect(() => {
-    setUsername(data)
-  }, [data, setUsername])
+    auth.setUsername(data);
+  }, [auth, data]);
 
   return (
     <>
       <ToastContainer position="top-right" transition={bounce} />
-      <div className={`auth-modal-wrapper ${showModal ? "open" : ""}`} />
+      <div className={`auth-modal-wrapper ${showSignInModal ? "open" : ""}`} />
       <div
-        className={`auth-form ${
-          showModal ? "open" : ""
-        } bg-white lg:w-2/3 mx-auto mt-20 md:mt-auto`}
+        className={`auth-form relative ${
+          showSignInModal ? "open" : ""
+        } bg-white lg:w-2/3 mx-auto mt-16 md:mt-12`}
       >
         <div className="flex absolute w-full justify-end -top-5 md:-right-5">
           <img
@@ -124,7 +122,12 @@ const AuthModal = ({ showModal, setShowModal, setUsername, signUp }) => {
               <FormHeader />
               <div className="mt-8">
                 <Email isFieldInvalid={isFieldInvalid} setForm={setForm} />
-                <Password validation={validation} submitted={submitted} form={form} isFieldInvalid={isFieldInvalid} setForm={setForm} passwordError={passwordError} />
+                <Password
+                  form={form}
+                  isFieldInvalid={isFieldInvalid}
+                  setForm={setForm}
+                  passwordError={passwordError}
+                />
                 <SignIn loading={loading} onSubmitForm={onSubmitForm} />
               </div>
             </div>
@@ -135,4 +138,4 @@ const AuthModal = ({ showModal, setShowModal, setUsername, signUp }) => {
   );
 };
 
-export default AuthModal;
+export default SignInModal;

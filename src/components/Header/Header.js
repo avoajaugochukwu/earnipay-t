@@ -1,59 +1,48 @@
 import React, { useEffect, useState } from "react";
-import logo_white_bg from "../../assets/img/logo.svg";
-import MobileHeader from "../MobileHeader";
-import AuthButtons from "../AuthButtons";
+
+import MobileHeader from "./MobileHeader";
 import AuthModal from "../AuthModal";
+import SignInModal from "../Auth/SignInModal";
+import DesktopHeader from "./DesktopHeader";
 
 const Header = () => {
   const [username, setUsername] = useState("");
   const [showModal, setShowModal] = useState(false);
 
+  const [showSignInModal, setShowSignInModal] = useState(false);
+
+
   useEffect(() => {
-    if (showModal) {
+    if (showModal || showSignInModal) {
       document.body.classList.add("no-scroll");
     } else {
       document.body.classList.remove("no-scroll");
     }
-  }, [showModal]);
+  }, [showModal, showSignInModal]);
 
   return (
     <>
-      <div className=" font-extralight justify-between lg:mx-[8.5rem] md:mx-8">
-        <div className="hidden md:block">
-          <div className="sm:flex pt-8">
-            <img
-              className="block mx-auto md:ml-0 md:mr-20"
-              src={logo_white_bg}
-              alt="logo"
-            />
-            <div className="flex px-3 md:w-1/2 justify-between text-gray-500 pt-3">
-              <p>About</p>
-              <p>Features</p>
-              <p>Pricing</p>
-              <p>Testimonial</p>
-              <p>Help</p>
-            </div>
-
-            <AuthButtons
-              username={username}
-              setUsername={setUsername}
-              showModal={showModal}
-              setShowModal={setShowModal}
-            />
-          </div>
-        </div>
-      </div>
+      <DesktopHeader
+        setShowSignInModal={setShowSignInModal}
+        setShowModal={setShowModal}
+      />
 
       <MobileHeader
         username={username}
         setUsername={setUsername}
         showModal={showModal}
         setShowModal={setShowModal}
+        setShowSignInModal={setShowSignInModal}
       />
       <AuthModal
         showModal={showModal}
         setShowModal={setShowModal}
         setUsername={setUsername}
+      />
+
+      <SignInModal
+        showSignInModal={showSignInModal}
+        setShowSignInModal={setShowSignInModal}
       />
     </>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import Loading from "../../common/Loading/Loading";
+import Loading from "../../../common/Loading/Loading";
 
 const SignIn = ({ onSubmitForm, loading }) => {
   return (
@@ -12,6 +12,17 @@ const SignIn = ({ onSubmitForm, loading }) => {
           {loading ? <Loading /> : "Sign in"}
         </button>
       </div>
+
+      <p className="mt-6 text-sm text-center text-gray-400">
+        Don&#x27;t have an account yet?{" "}
+        <a
+          href="."
+          className="text-red-500 focus:outline-none focus:underline hover:underline"
+        >
+          Sign up
+        </a>
+        .
+      </p>
     </>
   );
 };
