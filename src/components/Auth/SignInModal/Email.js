@@ -14,6 +14,7 @@ const Email = ({ isFieldInvalid, setForm }) => {
       <input
         defaultValue=''
         type="email"
+        name="email"
         placeholder="example@example.com"
         onChange={({ target: { value } }) =>
           setForm((form) => ({ ...form, email: value }))

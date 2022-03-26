@@ -1,10 +1,10 @@
 import React from "react";
-import logo_white_bg from "../../assets/img/logo_white_bg.png";
+import logo_white_bg from "../../../assets/img/logo_white_bg.png";
 
 const FormHeader = () => {
   return (
     <div className="text-center">
-      <h2 className="text-4xl font-bold text-center text-gray-700 mb-10">
+      <h2 className="text-4xl font-bold text-center text-gray-700">
         <img
           className="mx-auto"
           style={{ width: "30%" }}

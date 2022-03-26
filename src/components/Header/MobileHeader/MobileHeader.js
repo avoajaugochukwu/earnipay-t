@@ -4,7 +4,7 @@ import "./MobileHeader.css";
 import SideBar from "./SideBar";
 import logo from "../../../assets/img/logo.svg";
 
-const MobileHeader = ({ username, setUsername, showModal, setShowModal, setShowSignInModal }) => {
+const MobileHeader = ({ username, setUsername, showModal, setShowSignUpModal, setShowSignInModal }) => {
   const [active, setActive] = useState(false);
   const auth = useContext(AuthContext);
 
@@ -37,7 +37,7 @@ const MobileHeader = ({ username, setUsername, showModal, setShowModal, setShowS
         username={username}
         setUsername={setUsername}
         
-        setShowModal={setShowModal}
+        setShowSignUpModal={setShowSignUpModal}
         setShowSignInModal={setShowSignInModal}
         active={active}
         setActive={setActive}

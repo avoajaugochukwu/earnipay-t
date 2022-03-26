@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 
 import MobileHeader from "./MobileHeader";
-import AuthModal from "../AuthModal";
+import SignUpModal from "../Auth/SignUpModal";
 import SignInModal from "../Auth/SignInModal";
 import DesktopHeader from "./DesktopHeader";
 import useAuth from "../../hooks/useAuth";
@@ -9,7 +9,7 @@ import { AuthContext } from "../../store/context/AuthContextProvider";
 
 const Header = () => {
   const [username, setUsername] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [{ data, loading, passwordError }, getAuth] = useAuth();
   const auth = useContext(AuthContext);
 
@@ -22,19 +22,19 @@ const Header = () => {
       callBack: callBack,
     });
   };
-  
+
   const sendSignOutRequest = () => {
     getAuth({ logout: true });
     auth.setUsername("");
   };
 
   useEffect(() => {
-    if (showModal || showSignInModal) {
+    if (showSignUpModal || showSignInModal) {
       document.body.classList.add("no-scroll");
     } else {
       document.body.classList.remove("no-scroll");
     }
-  }, [showModal, showSignInModal]);
+  }, [showSignUpModal, showSignInModal]);
 
   useEffect(() => {
     auth.setUsername(data);
@@ -44,21 +44,22 @@ const Header = () => {
     <>
       <DesktopHeader
         setShowSignInModal={setShowSignInModal}
-        setShowModal={setShowModal}
+        setShowSignUpModal={setShowSignUpModal}
         sendSignOutRequest={sendSignOutRequest}
       />
 
       <MobileHeader
         username={username}
         setUsername={setUsername}
-        showModal={showModal}
-        setShowModal={setShowModal}
+        setShowSignUpModal={setShowSignUpModal}
         setShowSignInModal={setShowSignInModal}
       />
-      <AuthModal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        setUsername={setUsername}
+      <SignUpModal
+        sendSignInRequest={sendSignInRequest}
+        loading={loading}
+        passwordError={passwordError}
+        showSignUpModal={showSignUpModal}
+        setShowSignUpModal={setShowSignUpModal}
       />
 
       <SignInModal

@@ -5,7 +5,7 @@ import Button from "../../../common/Button";
 
 const DesktopHeader = ({
   setShowSignInModal,
-  setShowModal,
+  setShowSignUpModal,
   sendSignOutRequest,
 }) => {
   const auth = useContext(AuthContext);
@@ -55,7 +55,7 @@ const DesktopHeader = ({
                     label="Sign Up"
                     border="thick"
                     type="round"
-                    onClick={() => setShowModal(true)}
+                    onClick={() => setShowSignUpModal(true)}
                   />
                 </div>
               </>

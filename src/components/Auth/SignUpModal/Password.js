@@ -8,7 +8,7 @@ const Password = ({
   passwordError,
 }) => {
   return (
-    <div className="mt-6">
+    <div className="mt-8">
       <div className="flex justify-between mb-2">
         <label
           htmlFor="password"

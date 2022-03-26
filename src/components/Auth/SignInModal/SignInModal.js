@@ -75,13 +75,11 @@ const SignInModal = ({
       password: form.password,
       callBack: closeModal,
     });
-
-
   };
 
   const closeModal = (showToast = true) => {
     if (showToast) {
-      toast.success("Successfully logged in", {
+      toast.success("Successfully signed up", {
         transition: bounce,
         position: toast.POSITION.BOTTOM_RIGHT,
       });

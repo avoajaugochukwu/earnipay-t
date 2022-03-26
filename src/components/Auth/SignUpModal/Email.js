@@ -2,7 +2,7 @@ import React from "react";
 
 const Email = ({ isFieldInvalid, setForm }) => {
   return (
-    <div>
+    <div className="mt-8">
       <label
         htmlFor="email"
         className={`block mb-2 text-sm text-gray-600 ${
