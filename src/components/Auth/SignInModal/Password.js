@@ -47,7 +47,6 @@ const Password = ({ form, isFieldInvalid, setForm, passwordError }) => {
         </div>
         <div className="eye_div">
           <input
-            // className="input block border-2 border-gray-300 focus:border-pitch-black  py-3 px-3 w-full focus:outline-none "
             className={`${
               passwordError || isFieldInvalid("password")
                 ? "border-red-400 "
@@ -75,7 +74,7 @@ const Password = ({ form, isFieldInvalid, setForm, passwordError }) => {
       {isFieldInvalid("password") && (
         <p className="text-xs text-red-400 mt-2">
           Password must contain at least eight characters, at least one uppercase
-          letter, one lowercase letter, one number and one special character:
+          letter, one lowercase letter, one number and one special character
         </p>
       )}
       {passwordError && (

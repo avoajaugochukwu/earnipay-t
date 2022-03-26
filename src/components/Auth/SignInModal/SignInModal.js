@@ -18,6 +18,7 @@ const SignInModal = ({
   passwordError,
   showSignInModal,
   setShowSignInModal,
+  clearPasswordError
 }) => {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
@@ -66,6 +67,7 @@ const SignInModal = ({
     if (!isFormValid(current_validation)) {
       toast.error("Please complete the missing fields", {
         transition: bounce,
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
       return;
     }
@@ -79,7 +81,7 @@ const SignInModal = ({
 
   const closeModal = (showToast = true) => {
     if (showToast) {
-      toast.success("Successfully signed up", {
+      toast.success("Successfully logged in", {
         transition: bounce,
         position: toast.POSITION.BOTTOM_RIGHT,
       });
@@ -88,6 +90,7 @@ const SignInModal = ({
     setShowSignInModal(false);
     setSubmitted(false);
     setForm({ email: "", password: "" });
+    clearPasswordError()
   };
 
   return (
@@ -122,7 +125,7 @@ const SignInModal = ({
             <div className="flex-1 my-12">
               <FormHeader />
 
-              <Email isFieldInvalid={isFieldInvalid} setForm={setForm} />
+              <Email isFieldInvalid={isFieldInvalid} form={form} setForm={setForm} />
               <Password
                 form={form}
                 isFieldInvalid={isFieldInvalid}

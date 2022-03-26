@@ -28,6 +28,10 @@ const Header = () => {
     auth.setUsername("");
   };
 
+  const clearPasswordError = () => {
+    getAuth({ clearError: true });
+  }
+
   useEffect(() => {
     if (showSignUpModal || showSignInModal) {
       document.body.classList.add("no-scroll");
@@ -49,10 +53,9 @@ const Header = () => {
       />
 
       <MobileHeader
-        username={username}
-        setUsername={setUsername}
         setShowSignUpModal={setShowSignUpModal}
         setShowSignInModal={setShowSignInModal}
+        sendSignOutRequest={sendSignOutRequest}
       />
       <SignUpModal
         sendSignInRequest={sendSignInRequest}
@@ -60,6 +63,7 @@ const Header = () => {
         passwordError={passwordError}
         showSignUpModal={showSignUpModal}
         setShowSignUpModal={setShowSignUpModal}
+        clearPasswordError={clearPasswordError}
       />
 
       <SignInModal
@@ -68,6 +72,8 @@ const Header = () => {
         passwordError={passwordError}
         showSignInModal={showSignInModal}
         setShowSignInModal={setShowSignInModal}
+        clearPasswordError={clearPasswordError}
+        
       />
     </>
   );

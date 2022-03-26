@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import close_icon from "../../../assets/img/211652_close_icon.svg";
-import useAuth from "../../../hooks/useAuth";
 import { isFormValid } from "./auth.helpers";
 import "animate.css/animate.min.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +18,7 @@ const SignUpModal = ({
   sendSignInRequest,
   showSignUpModal,
   setShowSignUpModal,
+  clearPasswordError
 }) => {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
@@ -38,7 +38,7 @@ const SignUpModal = ({
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     const passwordRe =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,10}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d+)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,10}$/;
 
     const nextValidation = { ...validation };
 
@@ -47,8 +47,7 @@ const SignUpModal = ({
 
     nextValidation.password2 =
       form.password.length > 0
-        ? form.password === form.password2 && !!passwordRe.test(form.password2)
-        : true;
+        && form.password === form.password2 && !!passwordRe.test(form.password2);
 
     setValidation(nextValidation);
     return nextValidation;
@@ -75,6 +74,7 @@ const SignUpModal = ({
     if (!isFormValid(current_validation)) {
       toast.error("Please complete the missing fields", {
         transition: bounce,
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
       return;
     }
@@ -88,7 +88,7 @@ const SignUpModal = ({
 
   const closeModal = (showToast = true) => {
     if (showToast) {
-      toast.success("Successfully logged in", {
+      toast.success("Successfully signed up", {
         transition: bounce,
         position: toast.POSITION.BOTTOM_RIGHT,
       });
@@ -97,6 +97,7 @@ const SignUpModal = ({
     setShowSignUpModal(false);
     setSubmitted(false);
     setForm({ email: "", password: "", password2: "" });
+    clearPasswordError()
   };
 
   return (
@@ -131,7 +132,7 @@ const SignUpModal = ({
             <div className="flex-1 my-12">
               <FormHeader />
 
-              <Email isFieldInvalid={isFieldInvalid} setForm={setForm} />
+              <Email isFieldInvalid={isFieldInvalid} form={form} setForm={setForm} />
               <Password
                 validation={validation}
                 submitted={submitted}

@@ -14,19 +14,30 @@ export default () => {
     emailError: null,
     passwordError: null,
     error: null,
-  }
+  };
 
   const [result, setResult] = useState({
-    ...initialState
+    ...initialState,
   });
 
-  const getAuth = async ({email, password, callBack, logout = false}) => {
-    setResult(() => ({ ...initialState, loading: true }));
-
+  const getAuth = async ({
+    email,
+    password,
+    callBack,
+    logout = false,
+    clearError = false,
+  }) => {
     if (logout) {
       setResult(() => ({ ...initialState }));
       return [result, getAuth];
     }
+
+    if (clearError) {
+      setResult((prevState) => ({ ...prevState, passwordError: null }));
+      return [result, getAuth];
+    }
+
+    setResult(() => ({ ...initialState, loading: true }));
 
     setTimeout(() => {
       if (!email) {
@@ -50,11 +61,11 @@ export default () => {
 
       const lowerCase = password.toLowerCase();
 
-      if (lowerCase.includes('pass')) {
+      if (lowerCase.includes("pass")) {
         setResult((prevState) => ({
           ...prevState,
           loading: false,
-          data: email.split('@')[0],
+          data: email.split("@")[0],
         }));
         callBack();
       } else {
@@ -64,7 +75,6 @@ export default () => {
           error: true,
           passwordError: MESSAGES.wrongPassword,
         }));
-        
       }
     }, 3000);
   };

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Email = ({ isFieldInvalid, setForm }) => {
+const Email = ({ isFieldInvalid, form, setForm }) => {
   return (
     <div className="mt-8">
       <label
@@ -12,7 +12,7 @@ const Email = ({ isFieldInvalid, setForm }) => {
         Email Address
       </label>
       <input
-        defaultValue=''
+        value={form.email}
         type="email"
         name="email"
         id="email"

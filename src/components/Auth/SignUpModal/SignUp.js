@@ -12,6 +12,16 @@ const SignUp = ({ onSubmitForm, loading }) => {
           {loading ? <Loading /> : "Sign in"}
         </button>
       </div>
+      <p className="mt-6 text-sm text-center text-gray-400">
+        Have an account?{" "}
+        <a
+          href="."
+          className="text-red-500 focus:outline-none focus:underline hover:underline"
+        >
+          Sign in
+        </a>
+        .
+      </p>
     </>
   );
 };

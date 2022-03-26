@@ -3,7 +3,7 @@ import Button from "../../../common/Button";
 import { AuthContext } from "../../../store/context/AuthContextProvider";
 import Link from "./Link";
 
-const SideBar = ({ active, setActive, setShowModal, setShowSignInModal }) => {
+const SideBar = ({ active, setActive, setShowModal, setShowSignUpModal, setShowSignInModal, sendSignOutRequest }) => {
   const auth = useContext(AuthContext);
   return (
     <>
@@ -29,7 +29,7 @@ const SideBar = ({ active, setActive, setShowModal, setShowSignInModal }) => {
                   <Button
                     label="Sign Out"
                     type="round"
-                    onClick={() => auth.setUsername("")}
+                    onClick={() => sendSignOutRequest()}
                   />
                 </>
               ) : (
@@ -50,7 +50,7 @@ const SideBar = ({ active, setActive, setShowModal, setShowSignInModal }) => {
                       border="thick"
                       type="round"
                       onClick={() => {
-                        setShowModal(true);
+                        setShowSignUpModal(true);
                         setActive(false);
                       }}
                     />
