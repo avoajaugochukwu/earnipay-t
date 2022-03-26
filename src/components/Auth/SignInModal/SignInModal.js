@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../store/context/AuthContextProvider";
+import React, { useEffect, useState } from "react";
 import close_icon from "../../../assets/img/211652_close_icon.svg";
-import useAuth from "../../../hooks/useAuth";
 import { isFormValid } from "./auth.helpers";
 import "animate.css/animate.min.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,10 +12,13 @@ const bounce = cssTransition({
   exit: "animate__animated animate__bounceOut",
 });
 
-const SignInModal = ({ showSignInModal, setShowSignInModal }) => {
-  const auth = useContext(AuthContext);
-  
-  const [{ data, loading, passwordError }, getAuth] = useAuth();
+const SignInModal = ({
+  sendSignInRequest,
+  loading,
+  passwordError,
+  showSignInModal,
+  setShowSignInModal,
+}) => {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     email: "",
@@ -69,7 +70,13 @@ const SignInModal = ({ showSignInModal, setShowSignInModal }) => {
       return;
     }
 
-    getAuth(form.email, form.password, closeModal);
+    sendSignInRequest({
+      email: form.email,
+      password: form.password,
+      callBack: closeModal,
+    });
+
+
   };
 
   const closeModal = (showToast = true) => {
@@ -84,10 +91,6 @@ const SignInModal = ({ showSignInModal, setShowSignInModal }) => {
     setSubmitted(false);
     setForm({ email: "", password: "" });
   };
-
-  useEffect(() => {
-    auth.setUsername(data);
-  }, [auth, data]);
 
   return (
     <>
@@ -118,18 +121,17 @@ const SignInModal = ({ showSignInModal, setShowSignInModal }) => {
           </div>
           {/* -----------*******----------- */}
           <div className="relative items-center w-full max-w-md px-6 mx-auto lg:w-1/2">
-            <div className="flex-1 my-20">
+            <div className="flex-1 my-12">
               <FormHeader />
-              <div className="mt-8">
-                <Email isFieldInvalid={isFieldInvalid} setForm={setForm} />
-                <Password
-                  form={form}
-                  isFieldInvalid={isFieldInvalid}
-                  setForm={setForm}
-                  passwordError={passwordError}
-                />
-                <SignIn loading={loading} onSubmitForm={onSubmitForm} />
-              </div>
+
+              <Email isFieldInvalid={isFieldInvalid} setForm={setForm} />
+              <Password
+                form={form}
+                isFieldInvalid={isFieldInvalid}
+                setForm={setForm}
+                passwordError={passwordError}
+              />
+              <SignIn loading={loading} onSubmitForm={onSubmitForm} />
             </div>
           </div>
         </div>

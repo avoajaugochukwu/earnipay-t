@@ -20,8 +20,13 @@ export default () => {
     ...initialState
   });
 
-  const getAuth = async (email, password, callBack) => {
+  const getAuth = async ({email, password, callBack, logout = false}) => {
     setResult(() => ({ ...initialState, loading: true }));
+
+    if (logout) {
+      setResult(() => ({ ...initialState }));
+      return [result, getAuth];
+    }
 
     setTimeout(() => {
       if (!email) {
@@ -49,7 +54,7 @@ export default () => {
         setResult((prevState) => ({
           ...prevState,
           loading: false,
-          data: email,
+          data: email.split('@')[0],
         }));
         callBack();
       } else {
