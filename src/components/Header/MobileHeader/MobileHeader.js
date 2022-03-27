@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../store/context/AuthContextProvider";
+import React, { useEffect, useState } from "react";
 import "./MobileHeader.css";
 import SideBar from "./SideBar";
 import logo from "../../../assets/img/logo.svg";
 
-const MobileHeader = ({ showModal, setShowSignUpModal, setShowSignInModal, sendSignOutRequest }) => {
+const MobileHeader = ({ setShowSignUpModal, setShowSignInModal, sendSignOutRequest }) => {
   const [active, setActive] = useState(false);
-  const auth = useContext(AuthContext);
 
   useEffect(() => {
     if (active) {

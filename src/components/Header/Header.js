@@ -8,7 +8,6 @@ import useAuth from "../../hooks/useAuth";
 import { AuthContext } from "../../store/context/AuthContextProvider";
 
 const Header = () => {
-  const [username, setUsername] = useState("");
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [{ data, loading, passwordError }, getAuth] = useAuth();
   const auth = useContext(AuthContext);
